@@ -63,6 +63,46 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
+    /{apiToken}/json/listConversionTools:
+        get:
+            operationId: listConversionTools
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listconversiontools/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: type
+                    description: smartupgrade, socialproof_box, socialproof_bubble, countdown, trust_badge
+                    in: query
+                    required: true
+                    schema:
+                        type: string
+                        enum:
+                            - smartupgrade
+                            - socialproof_box
+                            - socialproof_bubble
+                            - countdown
+                            - trust_badge
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listConversionToolsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listCountries:
         get:
             operationId: listCountries
@@ -395,6 +435,108 @@ components:
                     anyOf:
                         -   type: string
                         -   type: string
+        listConversionToolsCountdown:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+        listConversionToolsSocialproofBubble:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+        listConversionToolsSocialproofBox:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+        listConversionToolsSmartupgrade:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+        listConversionToolsTrustBadge:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                code:
+                    type: string
+                    nullable: false
+                name:
+                    type: string
+                    nullable: false
+                badge_type:
+                    type: string
+                    nullable: false
+                position:
+                    type: string
+                    nullable: false
+                language:
+                    type: string
+                    nullable: false
+                sticky:
+                    type: string
+                    nullable: false
+                is_earnigs_disclaimer_shown:
+                    type: string
+                    nullable: false
+                auth_key:
+                    type: string
+                    nullable: false
+        listConversionToolsResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                data:
+                    type: object
+                    nullable: false
+                    properties:
+                        trust_badges:
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: '#/components/schemas/listConversionToolsTrustBadge'
+                        countdowns:
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: '#/components/schemas/listConversionToolsCountdown'
+                        socialproof_bubbles:
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: '#/components/schemas/listConversionToolsSocialproofBubble'
+                        socialproof_boxes:
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: '#/components/schemas/listConversionToolsSocialproofBox'
+                        smartupgrade:
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: '#/components/schemas/listConversionToolsSmartupgrade'
         listCurrencies:
             type: object
             properties:
