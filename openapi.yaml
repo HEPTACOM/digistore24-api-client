@@ -91,6 +91,44 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
+    /{apiToken}/json/listCurrencies:
+        get:
+            operationId: listCurrencies
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listcurrencies/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: convert_to
+                    description: EUR, USD, CHF
+                    in: query
+                    required: false
+                    schema:
+                        type: string
+                        enum:
+                            - EUR
+                            - USD
+                            - CHF
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listCurrenciesResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listDeliveries:
         get:
             operationId: listDeliveries
@@ -295,6 +333,85 @@ components:
                     anyOf:
                         -   type: string
                         -   type: string
+        listCurrencies:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                code:
+                    type: string
+                    nullable: false
+                name:
+                    type: string
+                    nullable: false
+                name_de:
+                    type: string
+                    nullable: true
+                name_en:
+                    type: string
+                    nullable: true
+                name_fr:
+                    type: string
+                    nullable: true
+                name_es:
+                    type: string
+                    nullable: true
+                name_nl:
+                    type: string
+                    nullable: true
+                name_it:
+                    type: string
+                    nullable: true
+                symbol:
+                    type: string
+                    nullable: false
+                min_price:
+                    type: string
+                    nullable: false
+                max_price:
+                    type: string
+                    nullable: false
+                to_EUR:
+                    type: number
+                    format: decimal
+                    nullable: true
+                to_USD:
+                    type: number
+                    format: decimal
+                    nullable: true
+                to_CHF:
+                    type: number
+                    format: decimal
+                    nullable: true
+                is_default_for_countries:
+                    type: array
+                    items:
+                        type: string
+        listCurrenciesResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                data:
+                    type: array
+                    nullable: false
+                    items:
+                        $ref: '#/components/schemas/listCurrencies'
         listDeliveries:
             type: object
             # TODO add properties

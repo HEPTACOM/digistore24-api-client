@@ -57,6 +57,23 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $operator
      *     @var string $language de, en
+     *     @var string $convert_to EUR, USD, CHF
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Heptacom\DigiStore24\Model\ListCurrenciesResponse|\Heptacom\DigiStore24\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function listCurrencies(string $apiToken, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Heptacom\DigiStore24\Endpoint\ListCurrencies($apiToken, $queryParameters), $fetch);
+    }
+
+    /**
+     * @param array $queryParameters {
+     *
+     *     @var string $operator
+     *     @var string $language de, en
      *     @var array $search
      * }
      *
