@@ -5,6 +5,37 @@ info:
 servers:
     - url: https://www.digistore24.com/api/call
 paths:
+    /{apiToken}/json/globalSettings:
+        get:
+            # TODO check whether it is really deprecated
+            deprecated: true
+            operationId: globalSettings
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/globalsettings/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+            responses:
+                200:
+                    description: 'Invalid API function called: globalSettings()'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+
     /{apiToken}/json/listDeliveries:
         get:
             operationId: listDeliveries
