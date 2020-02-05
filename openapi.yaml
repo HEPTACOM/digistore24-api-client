@@ -129,6 +129,39 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
+    /{apiToken}/json/listCustomFormRecords:
+        get:
+            operationId: listCustomFormRecords
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listcustomformrecords/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: purchase_id
+                    in: query
+                    required: false
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listCustomFormRecordsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listDeliveries:
         get:
             operationId: listDeliveries
@@ -412,6 +445,63 @@ components:
                     nullable: false
                     items:
                         $ref: '#/components/schemas/listCurrencies'
+        listCustomFormRecords:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                form_id:
+                    type: string
+                    nullable: false
+                purchase_item_id:
+                    type: string
+                    nullable: false
+                product_id:
+                    type: string
+                    nullable: true
+                form_no:
+                    type: string
+                    nullable: true
+                form_count:
+                    type: string
+                    nullable: true
+                data:
+                    # TODO use draft-06 patternProperties or propertyNames bypassed by using anyOf
+                    nullable: false
+                    anyOf:
+                        -   type: string
+                        -   type: string
+                address:
+                    # TODO use draft-06 patternProperties or propertyNames bypassed by using anyOf
+                    nullable: false
+                    anyOf:
+                        -   type: string
+                        -   type: string
+        listCustomFormRecordsResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                records:
+                    type: array
+                    nullable: false
+                    items:
+                        $ref: '#/components/schemas/listCustomFormRecords'
         listDeliveries:
             type: object
             # TODO add properties
