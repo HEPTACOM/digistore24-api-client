@@ -35,7 +35,34 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
-
+    /{apiToken}/json/listBuyUrls:
+        get:
+            operationId: listBuyUrls
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listbuyurls/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listBuyUrlsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listDeliveries:
         get:
             operationId: listDeliveries
@@ -166,6 +193,55 @@ components:
                 code:
                     type: integer
                     nullable: false
+        listBuyUrls:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                valid_until:
+                    type: string
+                    nullable: false
+                product_id:
+                    type: string
+                    nullable: false
+                url:
+                    type: string
+                    nullable: false
+                email:
+                    type: string
+                    format: email
+                    nullable: true
+                created_at:
+                    type: string
+                    nullable: false
+        listBuyUrlsResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                buyurls:
+                    type: object
+                    nullable: false
+                    properties:
+                        deliveries:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/listBuyUrls'
         listDeliveries:
             type: object
             # TODO add properties
