@@ -4,6 +4,33 @@ info:
     title: DigiStore24
 servers:
     - url: https://www.digistore24.com/api/call
+x-types:
+    - &?string
+        type: string
+        nullable: true
+    - &string
+        type: string
+        nullable: false
+    - &int
+        type: integer
+        nullable: false
+    - &?float
+        type: number
+        format: decimal
+        nullable: true
+    - &responseBase
+        api_version: *string
+        current_time: *string
+        timezone: *string
+        utc_offset: *string
+        result:
+            <<: *string
+            default: success
+    - &errorResponseRef
+        content:
+            application/json:
+                schema:
+                    $ref: '#/components/schemas/errorResponse'
 paths:
     /{apiToken}/json/globalSettings:
         get:
@@ -24,17 +51,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listBuyUrls:
         get:
             operationId: listBuyUrls
@@ -52,17 +73,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listBuyUrlsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listConversionTools:
         get:
             operationId: listConversionTools
@@ -92,17 +107,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listConversionToolsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listCountries:
         get:
             operationId: listCountries
@@ -120,17 +129,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listCountriesResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listCurrencies:
         get:
             operationId: listCurrencies
@@ -158,17 +161,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listCurrenciesResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listCustomFormRecords:
         get:
             operationId: listCustomFormRecords
@@ -191,17 +188,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listCustomFormRecordsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listDeliveries:
         get:
             operationId: listDeliveries
@@ -226,17 +217,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listOrderformsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listEtickets:
         get:
             operationId: listEtickets
@@ -255,17 +240,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listEticketsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listOrderforms:
         get:
             operationId: listOrderforms
@@ -294,17 +273,11 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listOrderformsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listProductGroups:
         get:
             operationId: listProductGroups
@@ -322,86 +295,37 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/listProductGroupsResponse'
                 4XX:
+                    <<: *errorResponseRef
                     description: 'Client error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
                 5XX:
+                    <<: *errorResponseRef
                     description: 'Server error'
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/errorResponse'
-
 components:
     schemas:
         errorResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
+                <<: *responseBase
                 result:
-                    type: string
+                    <<: *string
                     default: error
-                    nullable: false
-                message:
-                    type: string
-                    nullable: false
-                code:
-                    type: integer
-                    nullable: false
+                message: *string
+                code: *int
         listBuyUrls:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                valid_until:
-                    type: string
-                    nullable: false
-                product_id:
-                    type: string
-                    nullable: false
-                url:
-                    type: string
-                    nullable: false
+                id: *string
+                valid_until: *string
+                product_id: *string
+                url: *string
                 email:
-                    type: string
+                    <<: *?string
                     format: email
-                    nullable: true
-                created_at:
-                    type: string
-                    nullable: false
+                created_at: *string
         listBuyUrlsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 buyurls:
                     type: object
                     nullable: false
@@ -413,22 +337,7 @@ components:
         listCountriesResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     # TODO use draft-06 patternProperties or propertyNames bypassed by using anyOf
                     nullable: false
@@ -438,76 +347,35 @@ components:
         listConversionToolsCountdown:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
+                id: *string
         listConversionToolsSocialproofBubble:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
+                id: *string
         listConversionToolsSocialproofBox:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
+                id: *string
         listConversionToolsSmartupgrade:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
+                id: *string
         listConversionToolsTrustBadge:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                code:
-                    type: string
-                    nullable: false
-                name:
-                    type: string
-                    nullable: false
-                badge_type:
-                    type: string
-                    nullable: false
-                position:
-                    type: string
-                    nullable: false
-                language:
-                    type: string
-                    nullable: false
-                sticky:
-                    type: string
-                    nullable: false
-                is_earnigs_disclaimer_shown:
-                    type: string
-                    nullable: false
-                auth_key:
-                    type: string
-                    nullable: false
+                id: *string
+                code: *string
+                name: *string
+                badge_type: *string
+                position: *string
+                language: *string
+                sticky: *string
+                is_earnigs_disclaimer_shown: *string
+                auth_key: *string
         listConversionToolsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: object
                     nullable: false
@@ -540,54 +408,21 @@ components:
         listCurrencies:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                code:
-                    type: string
-                    nullable: false
-                name:
-                    type: string
-                    nullable: false
-                name_de:
-                    type: string
-                    nullable: true
-                name_en:
-                    type: string
-                    nullable: true
-                name_fr:
-                    type: string
-                    nullable: true
-                name_es:
-                    type: string
-                    nullable: true
-                name_nl:
-                    type: string
-                    nullable: true
-                name_it:
-                    type: string
-                    nullable: true
-                symbol:
-                    type: string
-                    nullable: false
-                min_price:
-                    type: string
-                    nullable: false
-                max_price:
-                    type: string
-                    nullable: false
-                to_EUR:
-                    type: number
-                    format: decimal
-                    nullable: true
-                to_USD:
-                    type: number
-                    format: decimal
-                    nullable: true
-                to_CHF:
-                    type: number
-                    format: decimal
-                    nullable: true
+                id: *string
+                code: *string
+                name: *string
+                name_de: *?string
+                name_en: *?string
+                name_fr: *?string
+                name_es: *?string
+                name_nl: *?string
+                name_it: *?string
+                symbol: *string
+                min_price: *string
+                max_price: *string
+                to_EUR: *?float
+                to_USD: *?float
+                to_CHF: *?float
                 is_default_for_countries:
                     type: array
                     items:
@@ -595,22 +430,7 @@ components:
         listCurrenciesResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: array
                     nullable: false
@@ -619,24 +439,12 @@ components:
         listCustomFormRecords:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                form_id:
-                    type: string
-                    nullable: false
-                purchase_item_id:
-                    type: string
-                    nullable: false
-                product_id:
-                    type: string
-                    nullable: true
-                form_no:
-                    type: string
-                    nullable: true
-                form_count:
-                    type: string
-                    nullable: true
+                id: *string
+                form_id: *string
+                purchase_item_id: *string
+                product_id: *?string
+                form_no: *?string
+                form_count: *?string
                 data:
                     # TODO use draft-06 patternProperties or propertyNames bypassed by using anyOf
                     nullable: false
@@ -652,22 +460,7 @@ components:
         listCustomFormRecordsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 records:
                     type: array
                     nullable: false
@@ -679,22 +472,7 @@ components:
         listDeliveriesResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: object
                     nullable: false
@@ -706,94 +484,35 @@ components:
         listDeliveriesSearchItem:
             type: object
             properties:
-                purchase_id:
-                    type: string
-                    nullable: false
+                purchase_id: *string
         listEtickets:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                download_url:
-                    type: string
-                    nullable: false
-                duration:
-                    type: string
-                    nullable: true
-                date_id:
-                    type: string
-                    nullable: false
-                date:
-                    type: string
-                    nullable: false
-                hint:
-                    type: string
-                    nullable: false
-                location_id:
-                    type: string
-                    nullable: false
-                template_id:
-                    type: string
-                    nullable: false
-                email:
-                    type: string
-                    nullable: false
-                count:
-                    type: string
-                    nullable: false
-                no:
-                    type: string
-                    nullable: false
-                first_name:
-                    type: string
-                    nullable: false
-                last_name:
-                    type: string
-                    nullable: false
-                salutation:
-                    type: string
-                    nullable: false
-                title:
-                    type: string
-                    nullable: false
-                language:
-                    type: string
-                    nullable: false
-                used_at:
-                    type: string
-                    nullable: false
-                is_blocked:
-                    type: string
-                    nullable: false
-                note:
-                    type: string
-                    nullable: true
-                purchase_item_id:
-                    type: string
-                    nullable: false
-                product_id:
-                    type: string
-                    nullable: false
+                id: *string
+                download_url: *string
+                duration: *?string
+                date_id: *string
+                date: *string
+                hint: *string
+                location_id: *string
+                template_id: *string
+                email: *string
+                count: *string
+                no: *string
+                first_name: *string
+                last_name: *string
+                salutation: *string
+                title: *string
+                language: *string
+                used_at: *string
+                is_blocked: *string
+                note: *?string
+                purchase_item_id: *string
+                product_id: *string
         listEticketsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: object
                     nullable: false
@@ -805,40 +524,15 @@ components:
         listOrderforms:
             type: object
             properties:
-                id:
-                    type: string
-                    nullable: false
-                name:
-                    type: string
-                    nullable: false
-                layout:
-                    type: string
-                    nullable: false
-                created_at:
-                    type: string
-                    nullable: false
-                modified_at:
-                    type: string
-                    nullable: false
+                id: *string
+                name: *string
+                layout: *string
+                created_at: *string
+                modified_at: *string
         listOrderformsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: object
                     nullable: false
@@ -847,31 +541,14 @@ components:
                             type: array
                             items:
                                 $ref: '#/components/schemas/listOrderforms'
-                        layout:
-                            type: string
-                            nullable: false
+                        layout: *string
         listProductGroups:
             type: object
             # todo fill
         listProductGroupsResponse:
             type: object
             properties:
-                api_version:
-                    type: string
-                    nullable: false
-                current_time:
-                    type: string
-                    nullable: false
-                timezone:
-                    type: string
-                    nullable: false
-                utc_offset:
-                    type: string
-                    nullable: false
-                result:
-                    type: string
-                    nullable: false
-                    default: success
+                <<: *responseBase
                 data:
                     type: object
                     nullable: false
