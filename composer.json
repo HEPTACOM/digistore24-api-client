@@ -8,6 +8,10 @@
         "openapi"
     ],
     "require": {
-        "php": ">= 7.2"
+        "php": ">= 7.2",
+        "jane-php/open-api-runtime": "^5.3"
+    },
+    "require-dev": {
+        "jane-php/open-api-3": "^5.3"
     }
 }
