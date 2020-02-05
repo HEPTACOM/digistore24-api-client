@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
-    protected $normalizers = [];
+    protected $normalizers = ['Heptacom\\DigiStore24\\Model\\ErrorResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ErrorResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponseData' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseDataNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponseDataItems' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseDataItemsNormalizer'];
     protected $normalizersCache = [];
 
     public function supportsDenormalization($data, $type, $format = null)
