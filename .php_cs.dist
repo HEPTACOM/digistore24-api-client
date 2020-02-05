@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-$finder = PhpCsFixer\Finder::create();
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/jane')
+;
 
 return PhpCsFixer\Config::create()
     ->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers())
@@ -28,6 +30,7 @@ return PhpCsFixer\Config::create()
         'doctrine_annotation_spaces' => true,
         'no_superfluous_phpdoc_tags' => true,
         'php_unit_test_case_static_method_calls' => true,
+        'declare_strict_types' => true,
         PhpCsFixerCustomFixers\Fixer\NoUselessCommentFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoUnneededConcatenationFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\SingleSpaceAfterStatementFixer::name() => true,

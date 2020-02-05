@@ -7,6 +7,11 @@
         "ecommerce",
         "openapi"
     ],
+    "autoload": {
+        "psr-4": {
+            "Heptacom\\DigiStore24\\": "jane/"
+        }
+    },
     "require": {
         "php": ">= 7.2",
         "jane-php/open-api-runtime": "^5.3"
@@ -22,6 +27,9 @@
         ],
         "php-lint-fix": [
             "php-cs-fixer fix --allow-risky=yes"
+        ],
+        "jane-generate": [
+            "jane-openapi generate -vvv -c jane-config.php"
         ]
     }
 }
