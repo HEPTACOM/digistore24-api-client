@@ -14,7 +14,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
-    protected $normalizers = ['Heptacom\\DigiStore24\\Model\\ErrorResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ErrorResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponseData' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseDataNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponseDataItems' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseDataItemsNormalizer'];
+    protected $normalizers = ['Heptacom\\DigiStore24\\Model\\ErrorResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ErrorResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListOrderforms' => 'Heptacom\\DigiStore24\\Normalizer\\ListOrderformsNormalizer', 'Heptacom\\DigiStore24\\Model\\ListOrderformsResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ListOrderformsResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListOrderformsResponseData' => 'Heptacom\\DigiStore24\\Normalizer\\ListOrderformsResponseDataNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponse' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseNormalizer', 'Heptacom\\DigiStore24\\Model\\ListProductGroupsResponseData' => 'Heptacom\\DigiStore24\\Normalizer\\ListProductGroupsResponseDataNormalizer'];
     protected $normalizersCache = [];
 
     public function supportsDenormalization($data, $type, $format = null)

@@ -5,6 +5,45 @@ info:
 servers:
     - url: https://www.digistore24.com/api/call
 paths:
+    /{apiToken}/json/listOrderforms:
+        get:
+            operationId: listOrderforms
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listorderforms/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: layout
+                    description: all, orderform_responsive, orderform_widget, orderform_legacy
+                    in: query
+                    required: false
+                    schema:
+                        type: string
+                        enum:
+                            - all
+                            - orderform_responsive
+                            - orderform_widget
+                            - orderform_legacy
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listOrderformsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listProductGroups:
         get:
             operationId: listProductGroups
@@ -61,6 +100,54 @@ components:
                 code:
                     type: integer
                     nullable: false
+        listOrderforms:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                name:
+                    type: string
+                    nullable: false
+                layout:
+                    type: string
+                    nullable: false
+                created_at:
+                    type: string
+                    nullable: false
+                modified_at:
+                    type: string
+                    nullable: false
+        listOrderformsResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                data:
+                    type: object
+                    nullable: false
+                    properties:
+                        orderforms:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/listOrderforms'
+                        layout:
+                            type: string
+                            nullable: false
         listProductGroups:
             type: object
             # todo fill
