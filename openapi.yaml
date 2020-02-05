@@ -197,6 +197,35 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/errorResponse'
+    /{apiToken}/json/listEtickets:
+        get:
+            operationId: listEtickets
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listetickets/
+            parameters:
+                # TODO add search parameter as object which is not supported by jane yet
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listEticketsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listOrderforms:
         get:
             operationId: listOrderforms
@@ -538,6 +567,99 @@ components:
                 purchase_id:
                     type: string
                     nullable: false
+        listEtickets:
+            type: object
+            properties:
+                id:
+                    type: string
+                    nullable: false
+                download_url:
+                    type: string
+                    nullable: false
+                duration:
+                    type: string
+                    nullable: true
+                date_id:
+                    type: string
+                    nullable: false
+                date:
+                    type: string
+                    nullable: false
+                hint:
+                    type: string
+                    nullable: false
+                location_id:
+                    type: string
+                    nullable: false
+                template_id:
+                    type: string
+                    nullable: false
+                email:
+                    type: string
+                    nullable: false
+                count:
+                    type: string
+                    nullable: false
+                no:
+                    type: string
+                    nullable: false
+                first_name:
+                    type: string
+                    nullable: false
+                last_name:
+                    type: string
+                    nullable: false
+                salutation:
+                    type: string
+                    nullable: false
+                title:
+                    type: string
+                    nullable: false
+                language:
+                    type: string
+                    nullable: false
+                used_at:
+                    type: string
+                    nullable: false
+                is_blocked:
+                    type: string
+                    nullable: false
+                note:
+                    type: string
+                    nullable: true
+                purchase_item_id:
+                    type: string
+                    nullable: false
+                product_id:
+                    type: string
+                    nullable: false
+        listEticketsResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                data:
+                    type: object
+                    nullable: false
+                    properties:
+                        etickets:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/listEtickets'
         listOrderforms:
             type: object
             properties:
