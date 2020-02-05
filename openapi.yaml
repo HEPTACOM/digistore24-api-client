@@ -5,6 +5,41 @@ info:
 servers:
     - url: https://www.digistore24.com/api/call
 paths:
+    /{apiToken}/json/listDeliveries:
+        get:
+            operationId: listDeliveries
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/list_deliveries/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: search
+                    in: query
+                    required: true
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/components/schemas/listDeliveriesSearchItem'
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listOrderformsResponse'
+                4XX:
+                    description: 'Client error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
+                5XX:
+                    description: 'Server error'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/errorResponse'
     /{apiToken}/json/listOrderforms:
         get:
             operationId: listOrderforms
@@ -99,6 +134,42 @@ components:
                     nullable: false
                 code:
                     type: integer
+                    nullable: false
+        listDeliveries:
+            type: object
+            # TODO add properties
+        listDeliveriesResponse:
+            type: object
+            properties:
+                api_version:
+                    type: string
+                    nullable: false
+                current_time:
+                    type: string
+                    nullable: false
+                timezone:
+                    type: string
+                    nullable: false
+                utc_offset:
+                    type: string
+                    nullable: false
+                result:
+                    type: string
+                    nullable: false
+                    default: success
+                data:
+                    type: object
+                    nullable: false
+                    properties:
+                        deliveries:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/listDeliveries'
+        listDeliveriesSearchItem:
+            type: object
+            properties:
+                purchase_id:
+                    type: string
                     nullable: false
         listOrderforms:
             type: object
