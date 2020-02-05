@@ -1,0 +1,13 @@
+{
+    "name": "heptacom/digistore24-api-client",
+    "license": "MIT",
+    "description": "OpenApi based api client to communicate to DigiStore24",
+    "keywords": [
+        "digistore24",
+        "ecommerce",
+        "openapi"
+    ],
+    "require": {
+        "php": ">= 7.2"
+    }
+}
