@@ -3,8 +3,15 @@ image: atlassian/default-image:2
 pipelines:
     branches:
         master:
-            - step:
-                  name: Mirror to Github
-                  script:
-                      - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
-                      - git push --force github master
+            -   step:
+                    name: Mirror to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
+                        - git push --force github master
+    tags:
+        '*':
+            -   step:
+                    name: Mirror tags on master to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
+                        - git merge-base --is-ancestor $BITBUCKET_TAG master && git push --force github tag $BITBUCKET_TAG
