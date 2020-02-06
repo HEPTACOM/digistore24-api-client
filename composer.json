@@ -7,6 +7,16 @@
         "ecommerce",
         "openapi"
     ],
+    "authors": [
+        {
+            "name": "HEPTACOM GmbH",
+            "role": "Manufacturer"
+        },
+        {
+            "name": "Joshua Behrens",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Heptacom\\DigiStore24\\": "jane/"
