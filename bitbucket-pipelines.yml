@@ -18,8 +18,11 @@ pipelines:
     pull-requests:
         '**':
             -   step:
-                    name: Is client library compiled?
+                    name: Generate API client library
                     image: php:7.2
+                    artifacts:
+                        - jane/**
+                        - vendor/**
                     script:
                         - apt-get update && apt-get install -y unzip zlib1g-dev libicu-dev libcurl3-dev g++
                         - docker-php-ext-install -j$(nproc) intl
@@ -31,4 +34,11 @@ pipelines:
                         - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                         - composer install
                         - composer run jane-generate
+                    after-script:
+                        - 'test $BITBUCKET_EXIT_CODE -eq 0 || composer check-platform-reqs'
+            -   step:
+                    name: Were there changes on compilation?
+                    script:
                         - test $(git diff | wc -l) -eq 0
+                    after-script:
+                        - 'test $BITBUCKET_EXIT_CODE -eq 0 || git diff'
