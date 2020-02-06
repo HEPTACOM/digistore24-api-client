@@ -13,6 +13,6 @@ pipelines:
             -   step:
                     name: Mirror tags on master to Github
                     script:
-                        - git pull origin master
+                        - git fetch origin master
                         - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
-                        - git merge-base --is-ancestor $BITBUCKET_COMMIT master && git push --force github tag $BITBUCKET_TAG
+                        - if git merge-base --is-ancestor $BITBUCKET_COMMIT origin/master; then git push --force github tag $BITBUCKET_TAG; fi
