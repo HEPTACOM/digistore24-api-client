@@ -699,11 +699,26 @@ paths:
                 url: https://docs.digistore24.com/knowledge-base/listvoucher/
     /{apiToken}/json/ping:
         get:
-            # Implement
-            <<: *fallbackPathItem
             operationId: ping
             externalDocs:
                 url: https://docs.digistore24.com/knowledge-base/ping/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/pingResponse'
+                4XX:
+                    <<: *errorResponseRef
+                    description: 'Client error'
+                5XX:
+                    <<: *errorResponseRef
+                    description: 'Server error'
     /{apiToken}/json/refundTransaction:
         get:
             # Implement
@@ -1178,6 +1193,17 @@ components:
                             type: array
                             items:
                                 $ref: '#/components/schemas/listProductGroups'
+        ping:
+            type: object
+            properties:
+                server_time: *string
+        pingResponse:
+            type: object
+            properties:
+                <<: *responseBase
+                data:
+                    $ref: '#/components/schemas/ping'
+                    nullable: false
     parameters:
         apiToken:
             name: apiToken
