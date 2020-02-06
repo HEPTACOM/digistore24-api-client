@@ -31,7 +31,285 @@ x-types:
             application/json:
                 schema:
                     $ref: '#/components/schemas/errorResponse'
+    - &fallbackPathItem
+        deprecated: true
+        operationId: globalSettings
+        externalDocs:
+            url: https://docs.digistore24.com/knowledge-base/globalsettings/
+        parameters:
+            -   $ref: '#/components/parameters/apiToken'
+            -   $ref: '#/components/parameters/operator'
+            -   $ref: '#/components/parameters/language'
+        responses:
+            200:
+                <<: *errorResponseRef
+                description: 'Not implemented yet'
+            4XX:
+                <<: *errorResponseRef
+                description: 'Client error'
+            5XX:
+                <<: *errorResponseRef
+                description: 'Server error'
 paths:
+    /{apiToken}/json/createBillingOnDemand:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createBillingOnDemand
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createbillingondemand/
+    /{apiToken}/json/createBuyUrl:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createBuyUrl
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createbuyurl/
+    /{apiToken}/json/createImage:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createImage
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createimage/
+    /{apiToken}/json/createOrderform:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createOrderform
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createorderform/
+    /{apiToken}/json/createPaymentplan:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createPaymentplan
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createpaymentplan/
+    /{apiToken}/json/createProduct:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createProduct
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createproduct/
+    /{apiToken}/json/createProductGroup:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createProductGroup
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createproductgroup/
+    /{apiToken}/json/createUpgrade:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createUpgrade
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/create_upgrade/
+    /{apiToken}/json/createVoucher:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: createVoucher
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/createvoucher/
+    /{apiToken}/json/deleteBuyUrl:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteBuyUrl
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deletebuyurl/
+    /{apiToken}/json/deleteImage:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteImage
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deleteimage/
+    /{apiToken}/json/deleteOrderform:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteOrderform
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deleteorderform/
+    /{apiToken}/json/deletePaymentplan:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deletePaymentplan
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deletepaymentplan/
+    /{apiToken}/json/deleteProduct:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteProduct
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deleteproduct/
+    /{apiToken}/json/deleteProductGroup:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteProductGroup
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deleteproductgroup/
+    /{apiToken}/json/deleteUpgrade:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteUpgrade
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/delete_upgrade/
+    /{apiToken}/json/deleteUpsells:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteUpsells
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/delete-upsells/
+    /{apiToken}/json/deleteVoucher:
+        delete:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: deleteVoucher
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/deletevoucher/
+    /{apiToken}/json/getAffiliateCommission:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getAffiliateCommission
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getaffiliatecommission/
+    /{apiToken}/json/getBuyer:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getBuyer
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getbuyer/
+    /{apiToken}/json/getDelivery:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getDelivery
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/get_delivery/
+    /{apiToken}/json/getEticket:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getEticket
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/geteticket/
+    /{apiToken}/json/getEticketSettings:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getEticketSettings
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/geteticketsettings/
+    /{apiToken}/json/getGlobalSettings:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getGlobalSettings
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getglobalsettings/
+    /{apiToken}/json/getImage:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getImage
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getimage/
+    /{apiToken}/json/getMarketplaceEntry:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getMarketplaceEntry
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getmarketplaceentry/
+    /{apiToken}/json/getOrderform:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getOrderform
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getorderform/
+    /{apiToken}/json/getOrderformMetas:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getOrderformMetas
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getorderformmetas/
+    /{apiToken}/json/getProduct:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getProduct
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getproduct/
+    /{apiToken}/json/getProductGroup:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getProductGroup
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getproductgroup/
+    /{apiToken}/json/getPurchase:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getPurchase
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getpurchase/
+    /{apiToken}/json/getPurchaseDownloads:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getPurchaseDownloads
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getpurchasedownloads/
+    /{apiToken}/json/getSmartupgrade:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getSmartupgrade
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getsmartupgrade/
+    /{apiToken}/json/getUpgrades:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getUpgrades
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getupgrade/
+    /{apiToken}/json/getUpsells:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getUpsells
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getupsells/
+    /{apiToken}/json/getUserInfo:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getUserInfo
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getuserinfo/
+    /{apiToken}/json/getVoucher:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: getVoucher
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/getvoucher/
     /{apiToken}/json/globalSettings:
         get:
             # TODO check whether it is really deprecated
@@ -56,6 +334,34 @@ paths:
                 5XX:
                     <<: *errorResponseRef
                     description: 'Server error'
+    /{apiToken}/json/ipnDelete:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: ipnDelete
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/ipndelete/
+    /{apiToken}/json/ipnInfo:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: ipnInfo
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/ipninfo/
+    /{apiToken}/json/ipnSetup:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: ipnSetup
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/ipnsetup/
+    /{apiToken}/json/listBuyers:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listBuyers
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listbuyers/
     /{apiToken}/json/listBuyUrls:
         get:
             operationId: listBuyUrls
@@ -78,6 +384,13 @@ paths:
                 5XX:
                     <<: *errorResponseRef
                     description: 'Server error'
+    /{apiToken}/json/listCommissions:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listCommissions
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listcommissions/
     /{apiToken}/json/listConversionTools:
         get:
             operationId: listConversionTools
@@ -245,6 +558,27 @@ paths:
                 5XX:
                     <<: *errorResponseRef
                     description: 'Server error'
+    /{apiToken}/json/listImages:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listImages
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listimages-2/
+    /{apiToken}/json/listInvoices:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listInvoices
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listinvoices/
+    /{apiToken}/json/listMarketplaceEntries:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listMarketplaceEntries
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listmarketplaceentries/
     /{apiToken}/json/listOrderforms:
         get:
             operationId: listOrderforms
@@ -278,6 +612,20 @@ paths:
                 5XX:
                     <<: *errorResponseRef
                     description: 'Server error'
+    /{apiToken}/json/listPaymentPlans:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listPaymentPlans
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listpaymentplans/
+    /{apiToken}/json/listPayouts:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listPayouts
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listpayouts/
     /{apiToken}/json/listProductGroups:
         get:
             operationId: listProductGroups
@@ -300,6 +648,279 @@ paths:
                 5XX:
                     <<: *errorResponseRef
                     description: 'Server error'
+    /{apiToken}/json/listProducts:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listProducts
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listproducts/
+    /{apiToken}/json/listPurchases:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listPurchases
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listpurchases/
+    /{apiToken}/json/listRebillingStatusChanges:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listRebillingStatusChanges
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listrebillingstatuschanges/
+    /{apiToken}/json/listSmartUpgrades:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listSmartUpgrades
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listsmartupgrades/
+    /{apiToken}/json/listTransactions:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listTransactions
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listtransactions/
+    /{apiToken}/json/listUpgrades:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listUpgrades
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listupgrades/
+    /{apiToken}/json/listVouchers:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: listVouchers
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/listvoucher/
+    /{apiToken}/json/ping:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: ping
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/ping/
+    /{apiToken}/json/refundTransaction:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: refundTransaction
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/refundtransaction/
+    /{apiToken}/json/renderJsTrackingCode:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: renderJsTrackingCode
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/renderjstrackingcode/
+    /{apiToken}/json/reportFraud:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: reportFraud
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/reportfraud/
+    /{apiToken}/json/requestApiKey:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: requestApiKey
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/requestapikey/
+    /{apiToken}/json/resendInvoiceMail:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: resendInvoiceMail
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/resendinvoicemail/
+    /{apiToken}/json/resendPurchaseConfirmationMail:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: resendPurchaseConfirmationMail
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/resendpurchaseconfirmationmail/
+    /{apiToken}/json/retrieveApiKey:
+        get:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: retrieveApiKey
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/retrieveapikey/
+    /{apiToken}/json/setAffiliateForEmail:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: setAffiliateForEmail
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/setaffiliateforemail-2/
+    /{apiToken}/json/startRebilling:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: startRebilling
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/startrebilling/
+    /{apiToken}/json/statsAffiliateToplist:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsAffiliateToplist
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statsaffiliatetoplist/
+    /{apiToken}/json/statsDailyAmounts:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsDailyAmounts
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statsdailyamounts/
+    /{apiToken}/json/statsExpectedPayouts:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsExpectedPayouts
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statsexpectedpayouts/
+    /{apiToken}/json/statsMarketplace:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsMarketplace
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statsmarketplace/
+    /{apiToken}/json/statsSales:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsSales
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statssales/
+    /{apiToken}/json/statsSalesSummary:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: statsSalesSummary
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/statssalessummary/
+    /{apiToken}/json/stopRebilling:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: stopRebilling
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/stoprebilling/
+    /{apiToken}/json/unregister:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: unregister
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/unregister/
+    /{apiToken}/json/updateAffiliateCommission:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateAffiliateCommission
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updateaffiliatecommission/
+    /{apiToken}/json/updateBuyer:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateBuyer
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updatebuyer/
+    /{apiToken}/json/updateDelivery:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateDelivery
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/update_delivery/
+    /{apiToken}/json/updateOrderform:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateOrderform
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updateorderform/
+    /{apiToken}/json/updatePaymentplan:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updatePaymentplan
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updatepaymentplan/
+    /{apiToken}/json/updateProduct:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateProduct
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updateproduct/
+    /{apiToken}/json/updateProductGroup:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateProductGroup
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updateproductgroup/
+    /{apiToken}/json/updatePurchase:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updatePurchase
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updatepurchase/
+    /{apiToken}/json/updateUpsells:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateUpsells
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/update_upsells/
+    /{apiToken}/json/updateVoucher:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: updateVoucher
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/updatevoucher/
+    /{apiToken}/json/validateAffiliate:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: validateAffiliate
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/validateaffiliate/
+    /{apiToken}/json/validateCouponCode:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: validateCouponCode
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/validatecouponcode/
+    /{apiToken}/json/validateEticket:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: validateEticket
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/validateeticket/
+    /{apiToken}/json/validateLicenseKey:
+        post:
+            # Implement
+            <<: *fallbackPathItem
+            operationId: validateLicenseKey
+            externalDocs:
+                url: https://docs.digistore24.com/knowledge-base/validatelicensekey/
 components:
     schemas:
         errorResponse:
