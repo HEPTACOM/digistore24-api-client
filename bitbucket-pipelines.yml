@@ -16,7 +16,7 @@ pipelines:
                         - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
                         - git push --force github tag $BITBUCKET_TAG
     pull-requests:
-        master:
+        '**':
             -   step:
                     name: Is client library compiled?
                     image: php:7.2
