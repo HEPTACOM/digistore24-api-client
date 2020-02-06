@@ -7,4 +7,4 @@ pipelines:
                   name: Mirror to Github
                   script:
                       - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
-                      - git push github master
+                      - git push --force github master
