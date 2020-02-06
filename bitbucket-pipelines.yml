@@ -21,13 +21,13 @@ pipelines:
                     name: Is client library compiled?
                     image: php:7.2
                     script:
-                        - docker-php-ext-configure intl
-                        - docker-php-ext-configure curl
-                        - docker-php-ext-configure fileinfo
-                        - docker-php-ext-configure json
-                        - docker-php-ext-configure mbstring
-                        - docker-php-ext-configure tokenizer
-                        - apt-get update && apt-get install -y unzip
+                        - apt-get update && apt-get install -y unzip zlib1g-dev libicu-dev libcurl3-dev g++
+                        - docker-php-ext-install -j$(nproc) intl
+                        - docker-php-ext-install -j$(nproc) curl
+                        - docker-php-ext-install -j$(nproc) fileinfo
+                        - docker-php-ext-install -j$(nproc) json
+                        - docker-php-ext-install -j$(nproc) mbstring
+                        - docker-php-ext-install -j$(nproc) tokenizer
                         - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                         - composer install
                         - composer run jane-generate
