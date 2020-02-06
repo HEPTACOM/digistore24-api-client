@@ -56,12 +56,12 @@ class Ping extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\Ope
     /**
      * {@inheritdoc}
      *
-     * @return \Heptacom\DigiStore24\Model\ErrorResponse|null
+     * @return \Heptacom\DigiStore24\Model\PingResponse|\Heptacom\DigiStore24\Model\ErrorResponse|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\ErrorResponse', 'json');
+            return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\PingResponse', 'json');
         }
         if ($status === 4 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\ErrorResponse', 'json');
