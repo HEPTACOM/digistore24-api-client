@@ -2,6 +2,16 @@
 
 ## 0.1.0
 
+- Implemented `listBuyUrls`
+- Implemented `listConversionTools`
+- Implemented `listCurrencies`
+- Implemented `listEtickets`
+- Implemented `listOrderforms`
+- Implemented partially `globalSettings`
+- Implemented partially `listCountries`
+- Implemented partially `listCustomFormRecords`
+- Implemented partially `listDeliveries`
+- Implemented partially `listProductGroups`
 - Implemented barely `createBillingOnDemand`
 - Implemented barely `createBuyUrl`
 - Implemented barely `createImage`
