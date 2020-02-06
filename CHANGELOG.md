@@ -1,5 +1,7 @@
 # Changelog
 
+- Implemented `ping`
+
 ## 0.1.0
 
 - Implemented `listBuyUrls`
