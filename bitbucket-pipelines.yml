@@ -1,4 +1,4 @@
-image: atlassian/default-image:2
+image: php:7.2
 
 pipelines:
     branches:
@@ -15,3 +15,13 @@ pipelines:
                     script:
                         - git remote add github git@github.com:HEPTACOM/digistore24-api-client.git
                         - git push --force github tag $BITBUCKET_TAG
+    pull-requests:
+        master:
+            -   step:
+                    name: Is client library compiled?
+                    script:
+                        - apt-get update && apt-get install -y unzip
+                        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+                        - composer install
+                        - composer run jane-generate
+                        - test $(git diff | wc -l) -eq 0
