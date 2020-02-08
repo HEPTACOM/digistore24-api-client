@@ -457,11 +457,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $operator
      *     @var string $language de, en
+     *     @var string $product_id
+     *     @var string $show_deleted
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Heptacom\DigiStore24\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface|null
+     * @return \Heptacom\DigiStore24\Model\GetProductResponse|\Heptacom\DigiStore24\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function getProduct(string $apiToken, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {

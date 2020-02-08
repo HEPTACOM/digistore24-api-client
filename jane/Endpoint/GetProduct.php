@@ -13,6 +13,8 @@ class GetProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      *     @var string $operator
      *     @var string $language de, en
+     *     @var string $product_id
+     *     @var string $show_deleted
      * }
      */
     public function __construct(string $apiToken, array $queryParameters = [])
@@ -44,11 +46,13 @@ class GetProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['operator', 'language']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['operator', 'language', 'product_id', 'show_deleted']);
+        $optionsResolver->setRequired(['product_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('operator', ['string']);
         $optionsResolver->setAllowedTypes('language', ['string']);
+        $optionsResolver->setAllowedTypes('product_id', ['string']);
+        $optionsResolver->setAllowedTypes('show_deleted', ['string']);
 
         return $optionsResolver;
     }
@@ -56,12 +60,12 @@ class GetProduct extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      * {@inheritdoc}
      *
-     * @return \Heptacom\DigiStore24\Model\ErrorResponse|null
+     * @return \Heptacom\DigiStore24\Model\GetProductResponse|\Heptacom\DigiStore24\Model\ErrorResponse|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\ErrorResponse', 'json');
+            return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\GetProductResponse', 'json');
         }
         if ($status === 4 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Heptacom\\DigiStore24\\Model\\ErrorResponse', 'json');
