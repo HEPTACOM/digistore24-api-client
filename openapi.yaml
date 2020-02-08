@@ -5,6 +5,26 @@ info:
 servers:
     - url: https://www.digistore24.com/api/call
 x-types:
+    - &?stringBool
+        nullable: true
+        description: Y or N
+        type: string
+        enum:
+            - Y
+            - N
+    - &stringBool
+        nullable: false
+        description: Y or N
+        type: string
+        enum:
+            - Y
+            - N
+    - &?bool
+        nullable: true
+        type: boolean
+    - &bool
+        nullable: false
+        type: boolean
     - &?string
         type: string
         nullable: true
@@ -249,11 +269,35 @@ paths:
                 url: https://docs.digistore24.com/knowledge-base/getorderformmetas/
     /{apiToken}/json/getProduct:
         get:
-            # Implement
-            <<: *fallbackPathItem
             operationId: getProduct
             externalDocs:
                 url: https://docs.digistore24.com/knowledge-base/getproduct/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+                -   name: product_id
+                    in: query
+                    required: true
+                    schema:
+                        type: string
+                -   name: show_deleted
+                    in: query
+                    required: false
+                    schema: *stringBool
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/getProductResponse'
+                4XX:
+                    <<: *errorResponseRef
+                    description: 'Client error'
+                5XX:
+                    <<: *errorResponseRef
+                    description: 'Server error'
     /{apiToken}/json/getProductGroup:
         get:
             # Implement
@@ -650,11 +694,26 @@ paths:
                     description: 'Server error'
     /{apiToken}/json/listProducts:
         get:
-            # Implement
-            <<: *fallbackPathItem
             operationId: listProducts
             externalDocs:
                 url: https://docs.digistore24.com/knowledge-base/listproducts/
+            parameters:
+                -   $ref: '#/components/parameters/apiToken'
+                -   $ref: '#/components/parameters/operator'
+                -   $ref: '#/components/parameters/language'
+            responses:
+                200:
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/listProductsResponse'
+                4XX:
+                    <<: *errorResponseRef
+                    description: 'Client error'
+                5XX:
+                    <<: *errorResponseRef
+                    description: 'Server error'
     /{apiToken}/json/listPurchases:
         get:
             # Implement
@@ -947,6 +1006,107 @@ components:
                     default: error
                 message: *string
                 code: *int
+        getProduct:
+            type: object
+            properties:
+                image_url: *string
+                user_id: *string
+                units_left: *string
+                owner_name: *string
+                owner_id: *string
+                thankyou_url: *string
+                affiliate_commission: *string
+                affiliate_commission_fix: *string
+                affiliate_commission_cur: *string
+                id: *string
+                name: *string
+                name_intern: *string
+                note: *string
+                tag: *string
+                language: *string
+                created_at: *string
+                modified_at: *string
+                product_group_id: *string
+                currency: *string
+                description: *string
+                salespage_url: *string
+                upsell_salespage_url: *string
+                buyer_type: *string
+                image_id: *string
+                upsell_thankyou_page_url: *string
+                add_order_data_to_upsell_sales_page_url: *string
+                product_type_id: *string
+                stop_sales_at: *string
+                encrypt_order_data_of_thankyou_page_url: *string
+                encrypt_order_data_of_upsell_thankyou_page_url: *string
+                upsell_freeflow_thankyou_url: *string
+                optin_text: *string
+                max_quantity: *string
+                description_thankyou_page: *string
+                orderform_id: *string
+                pay_methods: *string
+                notify_payment_emails: *string
+                notify_refund_emails: *string
+                notify_chargeback_emails: *string
+                notify_missed_payment_emails: *string
+                notify_rebilling_start_stop_emails: *string
+                notify_rebilling_payment_emails: *string
+                notify_addons_for: *string
+                approval_status: *string
+                approval_status_msg: *string
+                is_quantity_editable_before_purchase: *stringBool
+                is_quantity_editable_after_purchase: *stringBool
+                is_address_input_mandatory: *stringBool
+                is_phone_no_input_shown: *stringBool
+                is_title_input_shown: *stringBool
+                is_name_shown_on_bank_statement: *stringBool
+                is_affiliation_auto_accepted: *stringBool
+                is_active: *stringBool
+                is_addon_thankyou_url_enabled: *stringBool
+                has_addr_salutation: *stringBool
+                add_order_data_to_thankyou_page_url: *stringBool
+                redirect_to_custom_upsell_thankyou_page: *stringBool
+                add_order_data_to_upsell_thankyou_page_url: *stringBool
+                is_vat_shown: *stringBool
+                is_free_upsell_enabled: *stringBool
+                is_free_upsell_started: *stringBool
+                is_free_upsell_stopped: *stringBool
+                is_upsell_double_purchase_prevented: *stringBool
+                is_optin_checkbox_shown: *stringBool
+                is_phone_no_mandatory: *stringBool
+                is_search_engine_allowed: *stringBool
+                is_deleted: *stringBool
+                paymentplans:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/getProductPaymentPlans'
+        getProductPaymentPlans:
+            type: object
+            properties:
+                description: *string
+                id: *string
+                product_id: *string
+                created_at: *string
+                modified_at: *string
+                currency: *string
+                first_amount: *string
+                other_amounts: *string
+                number_of_installments: *string
+                other_billing_intervals: *string
+                first_billing_interval: *string
+                position: *string
+                cancel_policy: *string
+                is_for_sale: *string
+                is_for_sale_msg: *string
+                is_active: *stringBool
+                is_switching_allowed: *stringBool
+                can_buyer_terminate_installments: *stringBool
+        getProductResponse:
+            type: object
+            properties:
+                <<: *responseBase
+                data:
+                    $ref: '#/components/schemas/getProduct'
         listBuyUrls:
             type: object
             properties:
@@ -1193,6 +1353,89 @@ components:
                             type: array
                             items:
                                 $ref: '#/components/schemas/listProductGroups'
+        listProducts:
+            type: object
+            properties:
+                image_url: *string
+                user_id: *string
+                units_left: *string
+                owner_name: *string
+                owner_id: *string
+                thankyou_url: *string
+                affiliate_commission: *string
+                affiliate_commission_fix: *string
+                affiliate_commission_cur: *string
+                id: *string
+                name: *string
+                name_intern: *string
+                note: *string
+                tag: *string
+                language: *string
+                created_at: *string
+                modified_at: *string
+                currency: *string
+                description: *string
+                salespage_url: *string
+                upsell_salespage_url: *string
+                buyer_type: *string
+                image_id: *string
+                upsell_thankyou_page_url: *string
+                add_order_data_to_upsell_sales_page_url: *string
+                product_type_id: *string
+                stop_sales_at: *string
+                encrypt_order_data_of_thankyou_page_url: *string
+                encrypt_order_data_of_upsell_thankyou_page_url: *string
+                upsell_freeflow_thankyou_url: *string
+                optin_text: *string
+                max_quantity: *string
+                description_thankyou_page: *string
+                orderform_id: *string
+                pay_methods: *string
+                notify_payment_emails: *string
+                notify_refund_emails: *string
+                notify_chargeback_emails: *string
+                notify_missed_payment_emails: *string
+                notify_rebilling_start_stop_emails: *string
+                notify_rebilling_payment_emails: *string
+                notify_addons_for: *string
+                approval_status: *string
+                approval_status_msg: *string
+                product_group_name: *string
+                product_group_id: *bool
+                is_quantity_editable_before_purchase: *stringBool
+                is_quantity_editable_after_purchase: *stringBool
+                is_address_input_mandatory: *stringBool
+                is_phone_no_input_shown: *stringBool
+                is_title_input_shown: *stringBool
+                is_name_shown_on_bank_statement: *stringBool
+                is_affiliation_auto_accepted: *stringBool
+                is_active: *stringBool
+                is_addon_thankyou_url_enabled: *stringBool
+                has_addr_salutation: *stringBool
+                add_order_data_to_thankyou_page_url: *stringBool
+                redirect_to_custom_upsell_thankyou_page: *stringBool
+                add_order_data_to_upsell_thankyou_page_url: *stringBool
+                is_vat_shown: *stringBool
+                is_free_upsell_enabled: *stringBool
+                is_free_upsell_started: *stringBool
+                is_free_upsell_stopped: *stringBool
+                is_upsell_double_purchase_prevented: *stringBool
+                is_optin_checkbox_shown: *stringBool
+                is_phone_no_mandatory: *stringBool
+                is_search_engine_allowed: *stringBool
+                is_deleted: *stringBool
+        listProductsResponse:
+            type: object
+            properties:
+                <<: *responseBase
+                data:
+                    type: object
+                    nullable: false
+                    properties:
+                        products:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/listProducts'
         ping:
             type: object
             properties:

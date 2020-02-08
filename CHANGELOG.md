@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- Implemented `getProduct`
+- Implemented `listProducts`
 - Implemented `ping`
 
 ## 0.1.0
