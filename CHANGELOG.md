@@ -1,5 +1,6 @@
 # Changelog
 
+- Implemented `listProducts`
 - Implemented `ping`
 
 ## 0.1.0
