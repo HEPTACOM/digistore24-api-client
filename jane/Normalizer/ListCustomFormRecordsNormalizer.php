@@ -56,10 +56,18 @@ class ListCustomFormRecordsNormalizer implements DenormalizerInterface, Normaliz
             $object->setFormCount(null);
         }
         if (property_exists($data, 'data')) {
-            $object->setData($data->{'data'});
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'data'} as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setData($values);
         }
         if (property_exists($data, 'address')) {
-            $object->setAddress($data->{'address'});
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'address'} as $key_1 => $value_1) {
+                $values_1[$key_1] = $value_1;
+            }
+            $object->setAddress($values_1);
         }
 
         return $object;
@@ -81,10 +89,18 @@ class ListCustomFormRecordsNormalizer implements DenormalizerInterface, Normaliz
         $data->{'form_no'} = $object->getFormNo();
         $data->{'form_count'} = $object->getFormCount();
         if ($object->getData() !== null) {
-            $data->{'data'} = $object->getData();
+            $values = new \stdClass();
+            foreach ($object->getData() as $key => $value) {
+                $values->{$key} = $value;
+            }
+            $data->{'data'} = $values;
         }
         if ($object->getAddress() !== null) {
-            $data->{'address'} = $object->getAddress();
+            $values_1 = new \stdClass();
+            foreach ($object->getAddress() as $key_1 => $value_1) {
+                $values_1->{$key_1} = $value_1;
+            }
+            $data->{'address'} = $values_1;
         }
 
         return $data;
