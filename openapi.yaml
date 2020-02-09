@@ -1090,7 +1090,10 @@ components:
                 modified_at: *string
                 currency: *string
                 first_amount: *string
-                other_amounts: *string
+                other_amounts:
+                    anyOf:
+                        - *string
+                        - *int
                 number_of_installments: *string
                 other_billing_intervals: *string
                 first_billing_interval: *string
