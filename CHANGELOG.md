@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Amend type for `listProducts::other_amounts`
+- Fix todo to allow string and int for `listCountriesResponse::data`, `listCustomFormRecords::data`, `listCustomFormRecords::address`
+
 ## 0.2.0
 
 - Implemented `getProduct`

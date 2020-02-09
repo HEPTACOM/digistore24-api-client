@@ -40,7 +40,7 @@ class GetProductPaymentPlans
     protected $firstAmount;
 
     /**
-     * @var string
+     * @var mixed
      */
     protected $otherAmounts;
 
@@ -184,12 +184,12 @@ class GetProductPaymentPlans
         return $this;
     }
 
-    public function getOtherAmounts(): string
+    public function getOtherAmounts()
     {
         return $this->otherAmounts;
     }
 
-    public function setOtherAmounts(string $otherAmounts): self
+    public function setOtherAmounts($otherAmounts): self
     {
         $this->otherAmounts = $otherAmounts;
 

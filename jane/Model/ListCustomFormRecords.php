@@ -35,12 +35,12 @@ class ListCustomFormRecords
     protected $formCount;
 
     /**
-     * @var mixed
+     * @var mixed[]
      */
     protected $data;
 
     /**
-     * @var mixed
+     * @var mixed[]
      */
     protected $address;
 
@@ -116,24 +116,36 @@ class ListCustomFormRecords
         return $this;
     }
 
-    public function getData()
+    /**
+     * @return mixed[]
+     */
+    public function getData(): \ArrayObject
     {
         return $this->data;
     }
 
-    public function setData($data): self
+    /**
+     * @param mixed[] $data
+     */
+    public function setData(\ArrayObject $data): self
     {
         $this->data = $data;
 
         return $this;
     }
 
-    public function getAddress()
+    /**
+     * @return mixed[]
+     */
+    public function getAddress(): \ArrayObject
     {
         return $this->address;
     }
 
-    public function setAddress($address): self
+    /**
+     * @param mixed[] $address
+     */
+    public function setAddress(\ArrayObject $address): self
     {
         $this->address = $address;
 

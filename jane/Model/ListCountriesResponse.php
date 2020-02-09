@@ -30,7 +30,7 @@ class ListCountriesResponse
     protected $result = 'success';
 
     /**
-     * @var mixed
+     * @var mixed[]
      */
     protected $data;
 
@@ -94,12 +94,18 @@ class ListCountriesResponse
         return $this;
     }
 
-    public function getData()
+    /**
+     * @return mixed[]
+     */
+    public function getData(): \ArrayObject
     {
         return $this->data;
     }
 
-    public function setData($data): self
+    /**
+     * @param mixed[] $data
+     */
+    public function setData(\ArrayObject $data): self
     {
         $this->data = $data;
 

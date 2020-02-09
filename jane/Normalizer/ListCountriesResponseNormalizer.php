@@ -47,7 +47,11 @@ class ListCountriesResponseNormalizer implements DenormalizerInterface, Normaliz
             $object->setResult($data->{'result'});
         }
         if (property_exists($data, 'data')) {
-            $object->setData($data->{'data'});
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'data'} as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setData($values);
         }
 
         return $object;
@@ -72,7 +76,11 @@ class ListCountriesResponseNormalizer implements DenormalizerInterface, Normaliz
             $data->{'result'} = $object->getResult();
         }
         if ($object->getData() !== null) {
-            $data->{'data'} = $object->getData();
+            $values = new \stdClass();
+            foreach ($object->getData() as $key => $value) {
+                $values->{$key} = $value;
+            }
+            $data->{'data'} = $values;
         }
 
         return $data;
